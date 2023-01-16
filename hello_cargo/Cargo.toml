@@ -1,0 +1,10 @@
+[package]
+name = "hello_cargo"
+version = "0.1.0"
+edition = "2021"
+authors = ["choo <ddgg0511@naver.com"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
