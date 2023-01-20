@@ -49,12 +49,13 @@
 ```
 - `String`은 문자열 내용이 들어 있는 메모리를 가리키는 포인터, 문자열 길이, 메모리 용량 세 부분으로 이루어져 있다.
 - 데이터는 `stack`에 저장되며, 문자열의 내용은 `heap`에 저장된다.
-- 
-![string holding the value](./img/img.png){: width="300" height="300"}
+
+
+<img src="./img/img.png" width="300" />
 
 `s2`에 `s1`를 대입하면 `String`데이터가 복사된다, 포인터가 가리키는 힙 영역의 데이터는 복사되지 않는다.
 
-![copy of the pointer, length, and capacity](img/img_2.png){: width="300" height="300"}
+<img src="./img/img_2.png" width="300" />
 
 
 `s2`와 `s1`이 같은 곳을 가리키기 때문에 `drop`함수가 각각 호출되어 메모리를 해제하게 되면 중복 해제 오류가 발생하기 때문에`let s2 = s1;` 라인 뒤로는 `s1`이 더디상 유효하지 않다고 판단한다.
