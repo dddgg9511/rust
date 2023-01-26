@@ -68,3 +68,24 @@
 
 `s2`가 생성된 이후에 `s1`에 접근하면 `runtime error`가 발생한다.
 rust 에서는 이와 같이 대입 연산을 호출 햇을 때 기존의 변수를 무효화하기 때문에 복사가 아닌 이동이라고 표현한다.
+
+### Variables and Data Interacting with Clone
+
+```rust
+let s1 = String::from("hello");
+    let s2 = s1.clone();
+
+    println!("s1 = {}, s2 = {}", s1, s2);
+```
+`heap` 영역 데이터까지 `deep copy`를 하고 싶을 때는 `clone()` 함수를 사용
+
+### Stack-Only Data: Copy
+
+```rust
+    let x = 5;
+    let y = x;
+
+    println!("x = {}, y = {}", x, y);
+```
+
+컴파일 타임에 크기가 고정된 타입은 모두 스택에 저장되기 때문에 대입 연산시 기존 변수를 무효화할 필요가 없어 `copy`를 생략가능 
