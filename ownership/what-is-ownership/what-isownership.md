@@ -1,7 +1,7 @@
 # What Is Ownership?
 
 ## Ownership Rules
-1. rust 의 각각의 값은 해당 값ㄹ의 `owner`라고 불리는 변수를 가지고 있다.
+1. rust 의 각각의 값은 해당 값의 `owner`라고 불리는 변수를 가지고 있다.
 2. 한번에 딱 하나의 `owner` 만 존재할 수 있다.
 3. `owner가` 스코프 밖으로 벗어날 때 값은 `drop`된다
 
