@@ -7,8 +7,15 @@ edition = "2021"
 
 [dependencies]
 anyhow = "1.0"
+clap_complete = {version = "4.0.6", optional = true}
+
+[dependencies.clap]
+version = "4.0.22"
+features = ["suggestions", "color", "wrap_help", "cargo", "unstable-grouped", "derive"]
 
 [target.'cfg(unix)'.dependencies]
 users = "0.11.0"
 nix = { version = "0.25.0", default-features = false, features = ["signal"] }
 
+[features]
+completions = ["clap_complete"]

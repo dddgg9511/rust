@@ -1,7 +1,10 @@
 mod exit_codes;
+mod cli;
 
 use anyhow::{anyhow, bail, Context, Result};
 use crate::exit_codes::ExitCode;
+use crate::cli::Opts;
+use clap::{CommandFactory, Parser};
 
 
 fn main() {
@@ -18,5 +21,7 @@ fn main() {
 }
 
 fn run() -> Result<ExitCode> {
+    let opts = Opts::parse();
+
     ExitCode::Success.exit();
 }
