@@ -13,6 +13,15 @@ group(ArgGroup::new("execs").args(&["exec", "exec_batch", "list_details"]).confl
 "max_results", "has_results", "count"])),
 )]
 pub struct Opts {
+    #[arg(
+        default_value = "",
+        hide_default_value = true,
+        value_name = "pattern",
+        help = "the search pattern (a regular expression, unless '--glob' is used; optional)",
+        long_help
+    )]
+    pub pattern: String,
+
 }
 
 impl Opts {
