@@ -25,4 +25,32 @@ pub struct Opts {
 }
 
 impl Opts {
+
+    pub fn search_paths(&self) -> anyhow::Result<Vec<PathBuf>> {
+        // would it make sense to concatenate these?
+        let paths = if !self.path.is_empty() {
+            &self.path
+        } else if !self.search_path.is_empty() {
+            &self.search_path
+        } else {
+            let current_directory = Path::new(".");
+            ensure_current_directory_exists(current_directory)?;
+            return Ok(vec![self.normalize_path(current_directory)]);
+        };
+        Ok(paths
+            .iter()
+            .filter_map(|path| {
+                if filesystem::is_existing_directory(path) {
+                    Some(self.normalize_path(path))
+                } else {
+                    print_error(format!(
+                        "Search path '{}' is not a directory.",
+                        path.to_string_lossy()
+                    ));
+                    None
+                }
+            })
+            .collect())
+    }
+
 }
