@@ -23,6 +23,13 @@ fn main() {
 fn run() -> Result<ExitCode> {
     let opts = Opts::parse();
 
+    set_working_dir(&opts)?;
+
+    let search_paths = opts.search_paths()?;
+    if search_paths.is_empty() {
+        bail!("No valid search paths given.");
+    }
+
     ExitCode::Success.exit();
 }
 
