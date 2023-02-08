@@ -8,7 +8,6 @@ pub enum ExitCode {
     Success,
     HasResults(bool),
     GeneralError,
-    KilledBySigint,
 }
 
 impl From<ExitCode> for i32 {
